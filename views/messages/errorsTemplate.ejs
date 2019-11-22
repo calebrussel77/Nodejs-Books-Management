@@ -1,0 +1,30 @@
+<% if (typeof errors != 'undefined') { %>
+    <% for (let i=0; i<errors.length ; i++) { %>
+        <div class="ui floating message " style="background-color: #9f3a38; color: white">
+            <strong><i class="fa fa-exclamation-triangle"></i>  <%= errors[i].msg  %></strong>
+        </div>
+    <% } %>
+<%  }  %>
+
+<% if (success_msg !='') { %>
+        <div class="ui floating message " style="background-color: #0ea432; color: white">
+            <strong><i class="fa fa-check-circle"></i>  <%= success_msg  %></strong>
+        </div>
+<% } %>
+
+<% if (error_msg !='') { %>
+    <div class="ui floating message " style="background-color: #9f3a38; color: white">
+        <strong><i class="fa fa-exclamation-triangle"></i>  <%= error_msg  %></strong>
+    </div>
+<% } %>
+
+<% if (error !='') { %>
+    <div class="ui floating message " style="background-color: #9f3a38; color: white">
+        <strong><i class="fa fa-exclamation-triangle"></i>  <%= error  %></strong>
+    </div>
+<% } %>
+<% if (locals.errorQt) { %>
+    <div class="ui floating message " style="background-color: #9f3a38; color: white">
+        <strong><i class="fa fa-exclamation-triangle"></i>the store is not good yout must add a quantity for some book who are under 10 !</strong>
+    </div>
+<% } %>

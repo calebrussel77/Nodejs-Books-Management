@@ -1,0 +1,30 @@
+<% include ../layouts/header.ejs %>
+
+<h1> Register here to sign into your account !</h1>
+<div class="ui divider"></div><br>
+
+<% include ../messages/errorsTemplate.ejs %>
+
+<form class="ui form" method="POST" action="/users/register">
+
+
+        <div class="field">
+            <label>First Name</label>
+            <input type="text" name="firstName" placeholder="First Name" value="<%= typeof locals.firstName != 'undefined' ? locals.firstName : '' %>">
+        </div>
+        <div class="field">
+            <label>Last Name</label>
+            <input type="text" name="lastName" placeholder="Last Name" value="<%= typeof locals.lastName != 'undefined' ? locals.lastName : '' %>">
+        </div>
+        <div class="field">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Email" value="<%= typeof locals.email != 'undefined' ? locals.email : '' %>">
+        </div>
+    <div class="field">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Password" value="<%= typeof locals.password != 'undefined' ? locals.password : '' %>">
+    </div>
+        <button class="ui button" type="submit">Submit</button>
+</form>
+
+

@@ -1,0 +1,51 @@
+<% include ../layouts/adminHeader.ejs %>
+
+<h1><i class="fa fa-book"></i> Add a new book here !</h1>
+<br>
+
+<div class="ui divider"></div>
+<br>
+
+<form class="ui form segment" enctype="multipart/form-data" method="post" action="/admin/books/add">
+    <div class="two fields">
+        <div class="field">
+            <label>Book Name </label>
+            <input class="large" required  placeholder="Enter the Name of the book"  name="libelle" type="text">
+        </div>
+        <div class="field">
+            <label>Book Price </label>
+            <input type="number" required  placeholder="Enter Price of the Book in  'FCFA' "  name="prix">
+        </div>
+    </div>
+    <div class="one field">
+        <div class="field">
+            <label>Description</label>
+            <textarea required  placeholder="Description" name="description" type="text" ></textarea>
+        </div>
+            <div class="field">
+                <label>Books Types</label>
+                <label>
+                    <select class="ui fluid dropdown" name="book_type">
+                        <% for(let i=0; i < types.length; i++) { %>
+                        <option name="GRAY" value="<%= types[i].id %>">
+                              <%=  types[i].type_name  %>
+                        </option>
+                        <%  }   %>
+                    </select>
+                </label>
+            </div>
+    </div>
+    <div class="two fields">
+        <div class="field">
+            <label>Quantity book </label>
+            <input class="large" required  placeholder="Enter the Quantity of the book" name="quantite_book" type="text">
+        </div>
+        <div class="field">
+            <label>Book Image</label>
+            <input  placeholder="Upload book Image" name="image" type="file">
+        </div>
+    </div>
+    <button class="ui primary submit button ">Submit</button>
+</form>
+
+<% include ../layouts/footer.ejs %>

@@ -1,0 +1,53 @@
+<% include ../layouts/adminHeader.ejs %>
+
+    <h1>Edit a book here !</h1>
+    <br>
+
+    <div class="ui divider"></div>
+    <br>
+
+    <form class="ui form segment" enctype="multipart/form-data" method="post" action="/admin/edit/<%= books[0].id  %>?_method=PUT">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="two fields">
+            <div class="field">
+                <label>Book Name </label>
+                <input class="large" name="libelle" type="text" value="<%= books[0].book_name %>">
+            </div>
+            <div class="field">
+                <label>Book Price </label>
+                <input type="number"  value="<%= books[0].price %>" name="prix">
+            </div>
+        </div>
+        <div class="two field">
+            <div class="field">
+                <label>Description</label>
+                <textarea  name="description" type="text" ><%= books[0].description %></textarea>
+            </div>
+            <div class="field">
+                <label>Books Types</label>
+                <label>
+                    <select class="ui fluid dropdown" name="book_type">
+                        <% for(let i=0; i < Types.length; i++) { %>
+                            <option name="GRAY" value="<%= Types[i].id %>">
+                                <%=  Types[i].type_name  %>
+                            </option>
+                        <%  }   %>
+                    </select>
+                </label>
+            </div>
+        </div>
+        <div class="two fields">
+            <div class="field">
+                <label>Quantity book </label>
+                <input class="large" name="quantite_book" value="<%= books[0].quantity %>" type="text">
+            </div>
+            <div class="field">
+                <label>Book Image</label>
+                <input  placeholder="Upload book Image" name="image" required type="file">
+            </div>
+        </div>
+        <button class="ui primary submit button ">Submit</button>
+    </form>
+
+<% include ../layouts/footer.ejs %>
+

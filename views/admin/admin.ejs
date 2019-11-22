@@ -1,0 +1,40 @@
+<% include ../layouts/adminHeader.ejs %>
+
+
+<h1>Manage your books </h1>
+<% include ../messages/errorsTemplate.ejs %>
+
+<br>
+
+<div class="item left aligned">
+    <a class="ui button blue" style="color: white" href="/admin/books/add"><i class="fas fa-book"></i> Add a new Book</a>
+</div>
+
+    <% for(let i =0;i< books.length; i++) { %>
+
+    <table class="ui green table">
+        <thead>
+        <tr><th>Images</th>
+            <th>Book Name</th>
+            <th>Reserved Status</th>
+            <th>Price</th>
+            <th>Edit Book</th>
+            <th>Delete Book</th>
+        </tr></thead>
+
+        <tbody>
+        <tr>
+            <td><img class="ui small rounded image" src="<%= books[i].path_image.replace('\\','/').slice(6)  %>"></td>
+            <td><%= books[i].book_name %></td>
+            <td><% if (books[i].is_reserved == 0){ %> no reserved <%} else { %> reserved <% }   %></td>
+            <td><%= books[i].price %></td>
+            <td><a href="/admin/edit/<%=books[i].id %>"><button class="ui button green"><i class="fa fa-edit"></i> edit</button></a></td>
+            <form method="post" action="/admin/delete/<%= books[i].id %>">
+                <td><button class="ui button pinterest" type="submit" onclick="{prompt('Do you really want to delete this item ?') }"><i class="fa fa-trash-alt"></i> delete</button></td>
+            </form>
+        </tr>
+        </tbody>
+    </table>
+<% } %>
+
+<%  include ../layouts/footer.ejs %>

@@ -1,0 +1,32 @@
+body {
+    background-color: #dfe6e9;
+}
+  /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
+
+.card-body{
+    display: inline-block;
+    padding: 3px 3px 3px 3px;
+    box-shadow: #e38b54 3px 3px 3px 0;
+}
+.banner{
+    height:650px;
+    width:1127px;
+    margin: auto;
+    padding: 0;
+    box-shadow: gray 4px 4px 4px 4px ;
+}
+.nav-bar{
+    box-shadow: darkgray 4px 4px 4px 4px !important;
+}
+
+.text-nav{
+    padding-top: auto;
+}
+
+.date{
+    padding-bottom: 30px;
+    opacity: 0.5 !important;
+}
+.btnReserve{
+    box-shadow: gray 4px 4px 4px 4px !important;
+}

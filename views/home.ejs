@@ -1,0 +1,48 @@
+<% include ./layouts/header.ejs %>
+<% include ./layouts/banner.ejs %>
+
+<h1 class="ui huge header" style="color: #e38b54;"><i class="fa fa-book"></i> Reserve Your books easily Now!</h1>
+
+<div class="ui divider"></div><br>
+<% include ./messages/errorsTemplate.ejs %>
+
+<% for (let i = 0 ; i < locals.results.length ; i++) { %>
+
+<div class="container card-body ">
+
+    <div class="ui link cards card-content">
+        <div class="card">
+            <div class="image">
+                <img src="<%= results[i].path_image.replace('\\','/').slice(6) %>">
+            </div>
+            <div class="content">
+                <div class="header">
+                    <%= results[i].book_name %>
+                </div>
+                    <span class="right floated date"><%= locals.date(results[i].updatedAt).fromNow() %></span>
+                <div class="meta">
+                    <a><%= results[i].type_name %></a>
+                </div>
+                <div class="description">
+                    <%=  results[i].description  %>
+                </div>
+            </div>
+            <div class="extra content">
+                <form action="users/reserved/<%= results[i].id %>?_method=PUT" method="post">
+                    <input type="hidden" name="_method" value="PUT">
+      <span>
+          <button class="ui green button btnReserve" type="submit">
+              <i class="fa fa-download"></i>
+              Reserve here for <%=  results[i].price  %> FCFA!
+          </button>
+      </span>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<% } %>
+
+<% include ./layouts/footer.ejs %>

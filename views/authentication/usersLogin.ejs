@@ -1,0 +1,20 @@
+<%  include ../layouts/header.ejs %>
+
+<div style="padding-top: 150px">
+    <h1>Sign up here !</h1>
+
+    <% include ../messages/errorsTemplate.ejs %>
+
+    <form class="ui form segment" method="post" action="/users/login">
+    <div class="two fields">
+        <div class="field">
+            <label>Email </label>
+            <input class="large" placeholder="Enter Your email" name="email" type="email">
+        </div>
+        <div class="field">
+            <label>Password </label>
+            <input type="password" placeholder="Enter your password" name="password" >
+        </div>
+    </div><button class="ui green submit button ">Submit</button>
+</form>
+</div>
