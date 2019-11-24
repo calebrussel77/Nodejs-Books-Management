@@ -1,5 +1,13 @@
-<% include ./layouts/header.ejs %>
-<% include ./layouts/banner.ejs %>
+<% if (locals.admin) { %>
+    <% include ./layouts/adminHeader.ejs %>
+    <% include ./layouts/banner.ejs %>
+<% } else if (locals.simpleUser === true) { %>
+    <% include ./layouts/headerUser.ejs %>
+    <% include ./layouts/banner.ejs %>
+<% } else {%>
+    <% include ./layouts/header.ejs %>
+    <% include ./layouts/banner.ejs %>
+<% } %>
 
 <h1 class="ui huge header" style="color: #e38b54;"><i class="fa fa-book"></i> Reserve Your books easily Now!</h1>
 

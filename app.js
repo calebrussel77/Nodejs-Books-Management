@@ -41,8 +41,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: 'calebrussel',
-    saveUninitialized:false,
-    resave: false
+    saveUninitialized:true,
+    resave: true
 }));
 
 // override with POST having ?_method=DELETE

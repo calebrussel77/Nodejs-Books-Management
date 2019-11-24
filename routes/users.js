@@ -4,8 +4,7 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 const models = require( '../models/index');
 const ensureAuthenticate = require('../core/auth');
-const Sequelize = require('sequelize');
-const Op = Sequelize.Op;
+
 
 
 /* GET users Login page. */
@@ -27,7 +26,7 @@ router.put('/users/reserved/:id',ensureAuthenticate.ensureAuthenticated, functio
 
     if(req.session.passport.user !== 12) {
 
-        sequelize.query('UPDATE books SET is_reserved =true AND quantity= quantity-1 where books.id = ?', {replacements: [req.params.id] })
+        sequelize.query('UPDATE books SET is_reserved =1,quantity=quantity-1 where books.id = ?', {replacements: [req.params.id] })
             .then(() =>
             {
                 req.flash('success_msg', 'Book reserved successfully ');
@@ -38,14 +37,14 @@ router.put('/users/reserved/:id',ensureAuthenticate.ensureAuthenticated, functio
             })
     }
     else {
-        resp.send('You are not a simple user to reserves books')
+        resp.render('admin/error', {error: 'You are not a simple user to reserves books'})
     }
 
 
 });
 
 
-/* POST LOGOUT users. */
+/* GET LOGOUT users. */
 router.get('/users/logout', function (req,resp,next) {
     req.logout();
     req.flash('success_msg', 'You are logged out');
@@ -59,7 +58,7 @@ router.post('/users/login',(req,resp,next)=> {
     passport.authenticate('local', {
         successRedirect: '/admin',
         failureRedirect: '/users/login',
-        failureFlash: true
+        failureFlash: true,
     })(req, resp, next);
 });
 
